@@ -2,8 +2,7 @@ from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
-# Dummy data for the purpose of this example
-# In a real application, you might query a database or an API
+# in future implementing real db
 available_recipes = {
     "Pasta with Garlic, Oil, and Chili Pepper": ["pasta", "garlic", "olive oil", "chili pepper", "salt"],
     "Classic Tomato Soup": ["tomato", "onion", "garlic", "vegetable broth", "salt", "pepper"],
@@ -21,6 +20,10 @@ def home():
                 matching_recipes[recipe] = ingredients
         return render_template('recipes.html', recipes=matching_recipes)
     return render_template('index.html')
+
+@app.route('/sample-recipe')
+def sample_recipe():
+    return render_template('samplerecipe.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
